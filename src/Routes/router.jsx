@@ -22,7 +22,8 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <HomePage></HomePage>,
-                loader: () => fetch('http://localhost:5000/equipments')
+                // loader: () => fetch('http://localhost:5000/equipments')
+                loader: () => fetch('https://sports-equipment-store-server.vercel.app/equipments')
             },
         ]
     },
@@ -33,7 +34,8 @@ const router = createBrowserRouter([
             {
                 path: '/allEquipments',
                 element: <AllEquipments></AllEquipments>,
-                loader: () => fetch('http://localhost:5000/equipments')
+                // loader: () => fetch('http://localhost:5000/equipments')
+                loader: () => fetch('https://sports-equipment-store-server.vercel.app/equipments')
             },
         ]
     },

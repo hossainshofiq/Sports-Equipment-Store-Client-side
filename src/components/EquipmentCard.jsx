@@ -4,7 +4,9 @@ import { MdDeleteOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 const EquipmentCard = ({ singleEquipment }) => {
+
     const {image, item_name, category_name, description, price, rating, customization, processing_time, stock_status, user_email, user_name} =singleEquipment;
+    
     return (
         <div className="card card-side bg-[#F5F4F1] border mb-5">
 
