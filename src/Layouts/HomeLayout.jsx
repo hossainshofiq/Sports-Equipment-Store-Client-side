@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer';
-import Slider from '../components/Slider';
+import Slider from '../Pages/Home/Slider';
 
 const MainLayout = () => {
     return (
@@ -11,7 +11,7 @@ const MainLayout = () => {
                 <Navbar></Navbar>
             </nav>
             <div>
-                {/* <Slider></Slider> */}
+                <Slider></Slider>
             </div>
 
             <Outlet></Outlet>
