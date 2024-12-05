@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
+import GoogleLogin from '../components/GoogleLogin';
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -16,13 +18,23 @@ const Register = () => {
         console.log(name, email, photo, password);
 
         createUser(email, password)
-        .then(result => {
-            console.log(result.user)
-        })
-        .catch(error => {
-            console.log('Error', error);
-        })
+            .then(result => {
+                const user = result.user;
+                setUser(user);
+                console.log(user);
+                updateUserProfile({ displayName: name, photoURL: photo })
+                .then(() => {
+                    navigate('/');
+                }).catch(err => {
+                    console.log(err);
+                })
+                
+            })
+            .catch(error => {
+                console.log('Error', error);
+            })
     }
+    
 
     return (
         <div className="hero bg-base-200 my-10 container mx-auto rounded-xl">
@@ -64,8 +76,13 @@ const Register = () => {
                             <input name='password' type="password" placeholder="password" className="input input-bordered" required />
                         </div>
 
-                        <div className="form-control mt-6">
-                            <button className="btn btn-primary">Register</button>
+                        <div className="form-control gap-3 mt-6">
+                            <div>
+                                <button className="btn w-full text-white font-bold py-2 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Register</button>
+                            </div>
+                            <div>
+                                <GoogleLogin></GoogleLogin>
+                            </div>
                         </div>
 
                         <p className="font-semibold text-center my-5">

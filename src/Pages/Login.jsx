@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
+import GoogleLogin from '../components/GoogleLogin';
 
 const Login = () => {
 
-    const {userLogin} = useContext(AuthContext);
+    const { userLogin } = useContext(AuthContext);
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -14,12 +15,12 @@ const Login = () => {
         console.log(email, password);
 
         userLogin(email, password)
-        .then(result => {
-            console.log(result.user);
-        })
-        .catch(error => {
-            console.log('Error', error);
-        })
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log('Error', error);
+            })
     }
     return (
         <div className="hero bg-base-200 my-10 container mx-auto rounded-xl">
@@ -50,10 +51,17 @@ const Login = () => {
                             </label>
                         </div>
 
-                        <div className="form-control mt-6">
-                            <button className="btn btn-primary">Sign In</button>
+                        <div className="form-control gap-3 mt-6">
+                            <div>
+                                <button className="btn w-full text-white font-bold py-2 px-4 rounded-md bg-blue-500 hover:bg-blue-600">Login</button>
+                            </div>
+
+                            <div>
+                            <GoogleLogin></GoogleLogin>
+                            </div>
+
                         </div>
-                        <p className="font-semibold text-center my-5">Don't Have An Account ? <Link className="text-red-500 underline" to='/auth/register'>Register or sign up</Link></p>
+                        <p className="font-semibold text-center my-5">Don't Have An Account ? <Link className="text-red-500 underline" to='/auth/register'>Register</Link></p>
                     </form>
                 </div>
             </div>

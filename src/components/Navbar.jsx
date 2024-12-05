@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Navbar = () => {
+
+    const { user, userLogOut } = useContext(AuthContext);
 
     const links = <>
         <div className='lg:flex gap-5'>
@@ -36,7 +39,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link to='/'><a className="btn btn-ghost text-xl">EquiSports</a></Link>
+                <Link to='/'><a className="btn btn-ghost text-xl">Sports Equipments</a></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -44,9 +47,16 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
-                {/* <a className="btn">Button</a> */}
-                <button className='btn btn-accent'><Link to='/auth/login'>Log In</Link></button>
-                <button className='btn btn-success'><Link to='/auth/register'>Register</Link></button>
+
+                {
+                    user && user?.email ? <button onClick={userLogOut} className='btn btn-accent'>Logout</button> : <Link to='/auth/login' className='btn btn-accent'>Log In</Link>
+                }
+                {
+                    user && user?.email ? <img className='w-12 rounded-full' src={user && user.photoURL} alt="" /> : <Link to='/auth/register' className='btn btn-success'>Register</Link>
+                }
+                {/* <div>{user.displayName} </div> */}
+                {/* <div> {user.email}</div> */}
+                {/* <img className='w-12 rounded-full' src={user && user.photoURL} alt="" /> */}
             </div>
         </div>
     );

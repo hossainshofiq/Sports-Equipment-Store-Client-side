@@ -19,30 +19,50 @@ const AddEquipments = () => {
         const user_email = form.user_email.value;
         const user_name = form.user_name.value;
 
-        const newEquipment = {image, item_name, category_name, description, price, rating, customization, processing_time, stock_status, user_email, user_name};
+        const newEquipment = { image, item_name, category_name, description, price, rating, customization, processing_time, stock_status, user_email, user_name };
         console.log(newEquipment)
 
+
+
         // send data to the server
-        // fetch('http://localhost:5000/equipments',{
-        fetch('https://sports-equipment-store-server.vercel.app/equipments',{
+        fetch('http://localhost:5000/equipments', {
+            // fetch('https://sports-equipment-store-server.vercel.app/equipments',{
             method: 'POST',
             headers: {
-                'content-type' : 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(newEquipment)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.insertedId){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Do you want to continue',
-                    icon: 'success',
-                    confirmButtonText: 'Enjoy'
-                  })
-            }
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Do you want to continue',
+                        icon: 'success',
+                        confirmButtonText: 'Enjoy'
+                    })
+                }
+            })
+
+        const newCategory = { category_name };
+
+        fetch('http://localhost:5000/categories', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newCategory)
         })
+            .then(res => res.json())
+            .then(data => {
+                console.log('category created', data);
+                if(data.insertedId){
+                    alert('Category created on db')
+                }
+            })
+
     }
     return (
         <div className='bg-[#F4F3F0] px-28 py-16 rounded-lg my-10 container mx-auto'>
