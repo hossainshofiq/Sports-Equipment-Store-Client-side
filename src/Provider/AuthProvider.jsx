@@ -7,8 +7,8 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
-    console.log(user);
     const [loading, setLoading] = useState(true);
+    // console.log(user, loading);
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -25,13 +25,15 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
-    const updateUserProfile = ({updatedUser}) => {
-        return updateProfile (auth.currentUser, updatedUser);
+    const updateUserProfile = (updatedUser) => {
+        const {displayName, photoURL} = updatedUser;
+        return updateProfile (auth.currentUser, {displayName, photoURL});
     }
     
     useEffect( () => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+            setLoading(false);
         })
         return () => {
             unsubscribe();
@@ -45,6 +47,7 @@ const AuthProvider = ({ children }) => {
         userLogin,
         userLogOut,
         updateUserProfile,
+        setUser,
 
     }
 

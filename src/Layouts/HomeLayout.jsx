@@ -19,14 +19,17 @@ const MainLayout = () => {
 
             {/* <div>
                 <SportsCategories></SportsCategories>
-            </div>
-             */}
+            </div> */}
 
-            <div>
+            
+            {/* <div>
                 <ProductsSection></ProductsSection>
-            </div>
+            </div> */}
 
-            <Outlet></Outlet>
+            <main>
+                <Outlet></Outlet>
+            </main>
+
             <footer>
                 <Footer></Footer>
             </footer>

@@ -1,11 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import GoogleLogin from '../components/GoogleLogin';
+import Swal from 'sweetalert2';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { stringify } from 'postcss';
 
 const Register = () => {
 
     const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
+    const [showPassword, setShowPassword] = useState(false);
+    // const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const handleRegister = (e) => {
@@ -15,26 +20,71 @@ const Register = () => {
         const email = e.target.email.value;
         const photo = e.target.photo.value;
         const password = e.target.password.value;
-        console.log(name, email, photo, password);
+
+        // setErrorMessage('');
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!passwordRegex.test(password)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Weak Password',
+            text: 'Password must be at least 6 characters long and contain both uppercase and lowercase letters.',
+        });
+        return;
+    }
+
+        const userDoc = {
+            displayName: name,
+            photoURL: photo,
+        };
 
         createUser(email, password)
-            .then(result => {
+            .then((result) => {
                 const user = result.user;
                 setUser(user);
-                console.log(user);
-                updateUserProfile({ displayName: name, photoURL: photo })
-                .then(() => {
-                    navigate('/');
-                }).catch(err => {
-                    console.log(err);
+
+                // save new user to db
+                const newUser = {name, email};
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
                 })
-                
+                .then(res => res.json())
+                .then(data => {
+                    console.log("User created to db", data);
+                })
+
+                updateUserProfile(userDoc)
+                    .then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Registration Successful',
+                            text: 'Your account has been created successfully!',
+                            confirmButtonText: 'OK',
+                        })
+                    })
+                    .then(() => {
+                        navigate('/');
+                    })
+                    .catch((error) => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: error.message,
+                        });
+                    });
             })
-            .catch(error => {
-                console.log('Error', error);
-            })
-    }
-    
+            .catch((error) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Registration Failed',
+                    text: error.message,
+                });
+            });
+    };
 
     return (
         <div className="hero bg-base-200 my-10 container mx-auto rounded-xl">
@@ -74,6 +124,12 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input name='password' type="password" placeholder="password" className="input input-bordered" required />
+
+                            {/* <button onClick={() => setShowPassword(!showPassword)} className='btn btn-xs absolute right-10 t transform -translate-y-1/2'>
+                                {
+                                    showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>
+                                }
+                            </button> */}
                         </div>
 
                         <div className="form-control gap-3 mt-6">

@@ -1,25 +1,48 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import GoogleLogin from '../components/GoogleLogin';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
     const { userLogin } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log(location);
 
     const handleLogin = (e) => {
         e.preventDefault()
 
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         userLogin(email, password)
             .then(result => {
-                console.log(result.user);
+                navigate(location?.state ? location.state : '/');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Successful',
+                    text: 'Welcome back!',
+                    confirmButtonText: 'OK',
+                })
+                // .then(() => {
+                //     navigate('/');
+                // });
+                // console.log(result.user);
+                // navigate('/');
+                
+                
             })
             .catch(error => {
-                console.log('Error', error);
+                // console.log('Error', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Field',
+                    text: error.message,
+                    confirmButtonText: 'OK',
+                })
             })
     }
     return (

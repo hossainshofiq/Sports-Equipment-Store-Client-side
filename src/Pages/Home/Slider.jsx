@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 
 const Slider = () => {
     return (
-        <div className="my-5 p-2 md:p-3 lg:p-4 rounded-lg">
+        <div className="my-5 p-2 md:p-3 lg:p-5 bg-blue-400 rounded-lg container mx-auto">
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={50}
@@ -20,7 +20,7 @@ const Slider = () => {
 
                 <SwiperSlide>
                     <img
-                        src="https://www.groomassocies.com/wp-content/uploads/2023/11/AdobeStock_364906832.jpeg"
+                        src="https://img.mlbstatic.com/opprops-images/image/upload/t_16x9/w_2208/opprops/n1a6ezl2vikycdb4nvzl.png"
                         alt="Slide 1"
                         className="w-full rounded-lg"
                     />
@@ -28,7 +28,7 @@ const Slider = () => {
 
                 <SwiperSlide>
                     <img
-                        src="https://www.drramakantpsychologist.com/wp-content/uploads/2018/10/career-counselling-in-nagpu.jpg"
+                        src="https://c1.wallpaperflare.com/preview/23/303/605/badminton-shuttle-sport-bat.jpg"
                         alt="Slide 2"
                         className="w-full rounded-lg"
                     />
@@ -36,7 +36,7 @@ const Slider = () => {
 
                 <SwiperSlide>
                     <img
-                        src="https://www.xwa.edu.sg/wp-content/uploads/Blog_university_careers_counselling2.jpg"
+                        src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg"
                         alt="Slide 3"
                         className="w-full rounded-lg"
                     />

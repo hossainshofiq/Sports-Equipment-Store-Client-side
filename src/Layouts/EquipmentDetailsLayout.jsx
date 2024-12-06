@@ -1,9 +1,10 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ViewEquipmentDetails from '../Pages/ViewEquipmentDetails';
 
-const MyEquipListLayout = () => {
+const EquipmentDetailsLayout = () => {
     return (
         <div>
             <nav>
@@ -13,7 +14,7 @@ const MyEquipListLayout = () => {
             <main>
                 <Outlet></Outlet>
             </main>
-            
+
             <footer>
                 <Footer></Footer>
             </footer>
@@ -21,4 +22,4 @@ const MyEquipListLayout = () => {
     );
 };
 
-export default MyEquipListLayout;
+export default EquipmentDetailsLayout;

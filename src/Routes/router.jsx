@@ -2,7 +2,6 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import MainLayout from '../Layouts/HomeLayout';
 import ErrorPage from '../Pages/ErrorPage';
-import HomePage from '../Pages/Home/HomePage';
 import Login from '../Pages/Login';
 import AllEquipments from '../Pages/AllEquipments';
 import Register from '../Pages/Register';
@@ -12,6 +11,11 @@ import AddEquipmentLayout from '../Layouts/AddEquipmentLayout';
 import MyEquipments from './../Pages/MyEquipments';
 import AuthLayout from '../Layouts/AuthLayout';
 import MyEquipListLayout from '../Layouts/MyEquipListLayout';
+import EquipmentDetailsLayout from '../Layouts/EquipmentDetailsLayout';
+import ViewEquipmentDetails from '../Pages/ViewEquipmentDetails';
+import ProductsSection from './../Pages/Home/ProductsSection';
+import SportsCategories from '../Pages/Home/SportsCategories';
+import PrivateRoute from './PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -21,12 +25,20 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <HomePage></HomePage>,
-                loader: () => fetch('http://localhost:5000/equipments')
+                element: <ProductsSection></ProductsSection>,
+                loader: () => fetch('http://localhost:5000/equipments'),
                 // loader: () => fetch('https://sports-equipment-store-server.vercel.app/equipments')
+            },
+            {
+                path: '/categories',
+                element: <SportsCategories></SportsCategories>,
+                loader: () => fetch('http://localhost:5000/categories')
+
             },
         ]
     },
+
+
     {
         path: '/allEquipments',
         element: <AllEquipmentLayout></AllEquipmentLayout>,
@@ -41,7 +53,9 @@ const router = createBrowserRouter([
     },
     {
         path: '/addEquipments',
-        element: <AddEquipmentLayout></AddEquipmentLayout>,
+        element: <PrivateRoute>
+            <AddEquipmentLayout></AddEquipmentLayout>
+        </PrivateRoute>,
         children: [
             {
                 path: '/addEquipments',
@@ -51,11 +65,14 @@ const router = createBrowserRouter([
     },
     {
         path: '/myEquipments',
-        element: <MyEquipListLayout></MyEquipListLayout>,
+        element: <PrivateRoute>
+            <MyEquipListLayout></MyEquipListLayout>
+        </PrivateRoute>,
         children: [
             {
                 path: '/myEquipments',
-                element: <MyEquipments></MyEquipments>
+                element: <MyEquipments></MyEquipments>,
+                loader: () => fetch('http://localhost:5000/equipments')
             }
         ]
     },
@@ -71,6 +88,20 @@ const router = createBrowserRouter([
                 path: '/auth/register',
                 element: <Register></Register>
             },
+        ]
+    },
+    {
+        path: '/equipmentDetails',
+        element: <PrivateRoute>
+            <EquipmentDetailsLayout></EquipmentDetailsLayout>,
+        </PrivateRoute>,
+        children: [
+            {
+                path: '/equipmentDetails/:id',
+                element: <ViewEquipmentDetails></ViewEquipmentDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/equipments/${params.id}`)
+            },
+
         ]
     },
     {

@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const AddEquipments = () => {
+
+    const navigate = useNavigate();
 
     const handleAddEquipment = (e) => {
         e.preventDefault();
@@ -36,6 +39,7 @@ const AddEquipments = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                navigate('/');
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -59,7 +63,7 @@ const AddEquipments = () => {
             .then(data => {
                 console.log('category created', data);
                 if(data.insertedId){
-                    alert('Category created on db')
+                    // alert('Category created on db')
                 }
             })
 
@@ -179,8 +183,6 @@ const AddEquipments = () => {
                     </div>
                 </div>
 
-
-                {/* <button className="btn btn-block">block</button> */}
                 <input className="btn btn-block bg-gray-700 text-white hover:text-black" type="submit" value="Add Equipment" />
             </form>
         </div>
