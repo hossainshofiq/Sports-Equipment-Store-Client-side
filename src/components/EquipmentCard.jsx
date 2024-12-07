@@ -43,25 +43,51 @@ const EquipmentCard = ({ singleEquipment }) => {
         //         </div>
         //     </div>
         // </div>
+        <>
 
-        <div className="card card-side bg-[#F5F4F1] border mb-5 transition-transform transform hover:-translate-y-2">
-            <figure>
-                <img
-                    src={image}
-                    alt="Equipment" />
-            </figure>
-            <div className="card-body">
-                <h2 className="card-title">{item_name} </h2>
-                <p>{category_name} </p>
-                <p>{description} </p>
-                <p>{price} </p>
-                <p>{rating} </p>
-                <p>{customization} </p>
-                <div className="card-actions justify-center">
-                    <Link to={`/equipmentDetails/${_id}`}><button className='btn bg-green-600 text-white'>View Details</button></Link>
+            {/* <div className="card card-side bg-[#F5F4F1] border mb-5 transition-transform transform hover:-translate-y-2">
+                <figure>
+                    <img
+                        src={image}
+                        alt="Equipment" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">{item_name} </h2>
+                    <p>{category_name} </p>
+                    <p>{description} </p>
+                    <p>{price} </p>
+                    <p>{rating} </p>
+                    <p>{customization} </p>
+                    <div className="card-actions justify-center">
+                        <Link to={`/equipmentDetails/${_id}`}><button className='btn bg-green-600 text-white'>View Details</button></Link>
+                    </div>
+                </div>
+            </div> */}
+
+
+            <div className="card card-compact bg-base-100 border">
+                <figure>
+                    <img
+                    className='w-40'
+                        src={image}
+                        alt="Shoes" />
+                </figure>
+                <div className="card-body">
+                    <h2 className="card-title">{item_name} </h2>
+                    <p>{category_name} </p>
+                    <p>{description} </p>
+                    <p>{price} </p>
+                    <p>{rating} </p>
+                    <p>{customization} </p>
+                    <div className="card-actions justify-center">
+                        <Link to={`/equipmentDetails/${_id}`}><button className='btn bg-green-600 text-white'>View Details</button></Link>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
+
+
+
 
     );
 };

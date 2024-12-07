@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const AddEquipments = () => {
+
+
+    const { user } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -170,7 +174,7 @@ const AddEquipments = () => {
                             <span className='label-text'>User Email: </span>
                         </label>
                         <label>
-                            <input name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' />
+                            <input defaultValue={user.email} disabled name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' />
                         </label>
                     </div>
                     <div className='form-control md:w-1/2'>
@@ -178,7 +182,7 @@ const AddEquipments = () => {
                             <span className='label-text'>User Name: </span>
                         </label>
                         <label>
-                            <input name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' />
+                            <input defaultValue={user.displayName} disabled name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' />
                         </label>
                     </div>
                 </div>

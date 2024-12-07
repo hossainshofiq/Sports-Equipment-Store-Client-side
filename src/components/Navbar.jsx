@@ -12,7 +12,7 @@ const Navbar = () => {
                 <li><NavLink to='/allEquipments'>All Sports Equipment</NavLink></li>
                 <li><NavLink to='/addEquipments'>Add Equipment</NavLink></li>
                 <li><NavLink to='/myEquipments'>My Equipment List</NavLink></li>
-                <li><NavLink to='/categories'>Categories</NavLink></li>
+                {/* <li><NavLink to='/categories'>Categories</NavLink></li> */}
             </div>
         </>
     );

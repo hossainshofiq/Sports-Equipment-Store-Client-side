@@ -43,6 +43,7 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import EquipmentCard from '../../components/EquipmentCard';
+import SportsCategories from './SportsCategories';
 
 const ProductsSection = () => {
 
@@ -50,6 +51,8 @@ const ProductsSection = () => {
 
     return (
         <div className='w-11/12 mx-auto my-10'>
+
+            <SportsCategories></SportsCategories>
 
             <div className='text-3xl font-bold text-center'>All Products: {equipments.length}</div>
             <div className='lg:grid grid-cols-3 gap-5 my-5'>
