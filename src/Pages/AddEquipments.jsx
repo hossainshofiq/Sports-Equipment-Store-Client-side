@@ -66,7 +66,7 @@ const AddEquipments = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('category created', data);
-                if(data.insertedId){
+                if (data.insertedId) {
                     // alert('Category created on db')
                 }
             })
@@ -75,8 +75,8 @@ const AddEquipments = () => {
     return (
         <div className='bg-[#F4F3F0] px-28 py-16 rounded-lg my-10 container mx-auto'>
             <div className='flex flex-col gap-5 text-center mb-10'>
-                <h2 className='text-5xl'>Add Equipment </h2>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.</p>
+                <h2 className='text-3xl font-bold'>Add Equipment </h2>
+                <p>The "Add Equipment" feature allows users to input and save details about new items, such as sports equipment or other products. Users fill out a form with relevant fields like item name, category, description, price, rating, customization options, processing time, and stock status. Once the form is completed, clicking the "Add Equipment" button submits the data to the system, making the item available for inventory or listing.</p>
             </div>
 
             <form onSubmit={handleAddEquipment}>

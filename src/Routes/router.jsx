@@ -37,8 +37,6 @@ const router = createBrowserRouter([
             },
         ]
     },
-
-
     {
         path: '/allEquipments',
         element: <AllEquipmentLayout></AllEquipmentLayout>,
@@ -72,7 +70,7 @@ const router = createBrowserRouter([
             {
                 path: '/myEquipments',
                 element: <MyEquipments></MyEquipments>,
-                
+
             }
         ]
     },
@@ -85,7 +83,7 @@ const router = createBrowserRouter([
     //         {
     //             path: '/myEquipments/:id',
     //             element: <UpdateEquipments></UpdateEquipments>,
-                
+
     //         }
     //     ]
     // },

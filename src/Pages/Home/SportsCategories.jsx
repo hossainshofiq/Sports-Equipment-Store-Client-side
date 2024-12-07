@@ -13,7 +13,10 @@ const SportsCategories = () => {
 
     return (
         <div className="w-11/12 mx-auto my-10">
-            <div className="text-3xl font-bold text-center mb-8">Sports Categories</div>
+            <div className='mb-5'>
+                <h2 className="text-4xl font-bold text-center mb-3">Sports Categories : {categories.length} </h2>
+                <p className='text-center'>The "Sports Categories" section organizes products into various sports-related categories, making it easier for users to browse and find items tailored to specific sports. This feature enhances navigation and ensures a streamlined shopping or inventory management experience by grouping similar items under relevant categories.</p>
+            </div>
 
             {/* Conditional rendering */}
             {categories.length > 0 ? (

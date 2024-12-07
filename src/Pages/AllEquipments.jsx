@@ -11,9 +11,13 @@ const AllEquipments = () => {
     return (
         <div className='w-11/12 mx-auto my-10'>
             <div className='my-10'>
-                <h2 className='text-3xl font-bold text-center mb-10'>
-                    All Sports Equipments: {equipments.length}
-                </h2>
+               
+                    <h1 className='text-3xl font-bold mb-10 flex justify-between items-center'>All Sports Equipments: {equipments.length}</h1>
+
+                    <p>The "All Equipments" section provides an overview of all items added to the system. It displays a comprehensive list of equipment, including their details such as name, category, price, rating, stock status, and more. This feature helps users view, manage, and track the inventory efficiently in one centralized location.</p>
+
+                    <button className='btn btn-success text-white'>Sort By Price</button>
+            
 
                 <div className="overflow-x-auto border">
                     <table className="table">
