@@ -16,6 +16,8 @@ import ViewEquipmentDetails from '../Pages/ViewEquipmentDetails';
 import ProductsSection from './../Pages/Home/ProductsSection';
 import SportsCategories from '../Pages/Home/SportsCategories';
 import PrivateRoute from './PrivateRoute';
+import UpdateEquipment from '../Pages/UpdateEquipment';
+import UpdateEquipmentLayout from '../Layouts/UpdateEquipmentLayout';
 
 
 const router = createBrowserRouter([
@@ -71,9 +73,30 @@ const router = createBrowserRouter([
                 path: '/myEquipments',
                 element: <MyEquipments></MyEquipments>,
 
-            }
+            },
         ]
     },
+
+    {
+        path: '/myEquipments/updateEquipment',
+        element: <UpdateEquipmentLayout></UpdateEquipmentLayout>,
+        children: [
+            {
+                path: '/myEquipments/updateEquipment/:id',
+                element: <UpdateEquipment></UpdateEquipment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/equipments/${params.id}`)
+            },
+        ]
+    },
+
+    // {
+    //     path: '/myEquipments/updateEquipment/:id',
+    //     element: <UpdateEquipment></UpdateEquipment>,
+    //     loader: ({ params }) => fetch(`http://localhost:5000/equipments/${params.id}`)
+    // },
+
+
+
     // {
     //     path: '/myEquipments/:id',
     //     element: <PrivateRoute>
@@ -115,6 +138,7 @@ const router = createBrowserRouter([
 
         ]
     },
+
     {
         // path: '*',
         // element: <h1>Error</h1>

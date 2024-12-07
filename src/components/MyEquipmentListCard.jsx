@@ -75,7 +75,7 @@ const MyEquipmentListCard = ({ singleEquipment }) => {
             </div>
             <div className="card-actions justify-center">
 
-                <Link to={`/myEquipments/${_id}`}><button onClick={() => handleUpdateCoffee()} className='btn bg-lime-500 text-white hover:bg-lime-600'>
+                <Link to={`updateEquipment/${_id}`}><button className='btn bg-lime-500 text-white hover:bg-lime-600'>
                     <FaPen></FaPen>
                 </button></Link>
 

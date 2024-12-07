@@ -70,8 +70,8 @@ const AddEquipments = () => {
                     // alert('Category created on db')
                 }
             })
-
     }
+    
     return (
         <div className='bg-[#F4F3F0] px-28 py-16 rounded-lg my-10 container mx-auto'>
             <div className='flex flex-col gap-5 text-center mb-10'>

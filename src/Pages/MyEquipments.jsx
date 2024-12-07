@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { FaPen } from 'react-icons/fa';
-import { MdDeleteOutline } from 'react-icons/md';
-import { Link, useLoaderData } from 'react-router-dom';
+// import { FaPen } from 'react-icons/fa';
+// import { MdDeleteOutline } from 'react-icons/md';
+// import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
-import EquipmentCard from '../components/EquipmentCard';
+// import EquipmentCard from '../components/EquipmentCard';
 import MyEquipmentListCard from '../components/MyEquipmentListCard';
 
 const MyEquipments = () => {
