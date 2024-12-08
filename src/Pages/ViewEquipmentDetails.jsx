@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 // { singleEquipment }
@@ -6,14 +6,15 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 const ViewEquipmentDetails = () => {
 
     const equipments = useLoaderData();
-    console.log(equipments);
+    // console.log(equipments);
+    const [theme, setTheme] = useState("light");
 
     return (
 
-        <div className="card card-compact bg-base-100 w-3/4 container mx-auto my-10 border p-5">
+        <div className={`card card-compact w-11/12 lg:w-1/2 container mx-auto my-10 border p-5 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"}`}>
             <figure>
                 <img
-                    className='w-full rounded-xl'
+                    className='w-96 rounded-xl'
                     src={equipments?.image}
                     alt="Shoes" />
             </figure>
@@ -22,11 +23,14 @@ const ViewEquipmentDetails = () => {
                 <p className='font-semibold'>Category Name: <span className='font-normal'>{equipments?.category_name}</span> </p>
                 <p className='font-semibold'>Description: <span className='font-normal'>{equipments?.description}</span> </p>
                 <p className='font-semibold'>Price: $<span className='font-normal'>{equipments?.price}</span> </p>
+                <p className='font-semibold'>Rating: $<span className='font-normal'>{equipments?.rating}</span> </p>
                 <p className='font-semibold'>Procession Time: <span className='font-normal'>{equipments?.processing_time}</span> </p>
                 <p className='font-semibold'>Stock Status: <span className='font-normal'>{equipments?.stock_status}</span> </p>
 
+                <div className="divider"></div>
+
                 <div className='flex justify-between'>
-                    <Link to='/'><button className='btn bg-green-500 text-white'><BiLeftArrowAlt></BiLeftArrowAlt> Back to Home</button></Link>
+                    <Link to='/'><button className='btn bg-green-500 hover:bg-green-600 text-white'><BiLeftArrowAlt></BiLeftArrowAlt> Back to Home</button></Link>
 
                     {/* <button className='btn bg-blue-900 text-white'>Add to My Equipment List <BiRightArrowAlt></BiRightArrowAlt></button> */}
                 </div>

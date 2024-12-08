@@ -32,8 +32,8 @@ const Login = () => {
                 // });
                 // console.log(result.user);
                 // navigate('/');
-                
-                
+
+
             })
             .catch(error => {
                 // console.log('Error', error);
@@ -80,7 +80,7 @@ const Login = () => {
                             </div>
 
                             <div>
-                            <GoogleLogin></GoogleLogin>
+                                <GoogleLogin></GoogleLogin>
                             </div>
 
                         </div>

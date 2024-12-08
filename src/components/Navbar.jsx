@@ -1,9 +1,32 @@
-import React, { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
     const { user, userLogOut } = useContext(AuthContext);
+    const [theme, setTheme] = useState("light");
+
+    // const [theme, setTheme] = useState("light");
+    // const location = useLocation();
+    // const isHomePage = location.pathname === "/";
+
+    // useEffect(() => {
+    //     if (isHomePage) {
+    //         const savedTheme = localStorage.getItem("theme") || "light";
+    //         setTheme(savedTheme);
+    //         document.body.className = savedTheme;
+    //     } else {
+    //         document.body.className = "";
+    //     }
+    // }, [isHomePage]);
+
+    // const toggleTheme = () => {
+    //     const newTheme = theme === "light" ? "dark" : "light";
+    //     setTheme(newTheme);
+    //     document.documentElement.className = newTheme;
+    //     localStorage.setItem("theme", newTheme);
+    // };
 
     const links = (
         <>
@@ -12,13 +35,13 @@ const Navbar = () => {
                 <li><NavLink to='/allEquipments'>All Sports Equipment</NavLink></li>
                 <li><NavLink to='/addEquipments'>Add Equipment</NavLink></li>
                 <li><NavLink to='/myEquipments'>My Equipment List</NavLink></li>
-                {/* <li><NavLink to='/categories'>Categories</NavLink></li> */}
             </div>
         </>
     );
 
     return (
-        <div className="navbar bg-purple-600 text-white font-rancho">
+        // <div className="navbar">
+        <div className={`navbar ${theme === "dark" ? "bg-gray-900 text-white" : "bg-purple-600 text-white"} font-rancho`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,7 +67,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <Link to='/'><a className="btn btn-ghost text-xl">Sports Equipments</a></Link>
+                <Link to='/'><a className="btn btn-ghost text-xl">Sports Gear</a></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -52,31 +75,58 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-2">
+                {/* Toggle Button */}
+                {/* {isHomePage && (
+                    <div className="navbar-end gap-2">
+                        <button
+                            onClick={toggleTheme}
+                            className="btn"
+                        >
+                            {theme === "light" ? "Dark" : "Light"}
+                        </button>
+                    </div>
+                )} */}
+
                 {user && user?.email ? (
                     <button onClick={userLogOut} className='btn btn-accent'>Logout</button>
                 ) : (
                     <Link to='/auth/login' className='btn btn-accent'>Log In</Link>
                 )}
+
                 {user && user?.email ? (
-                    <div className="relative group">
-                        {/* Profile Picture */}
+
+                    // <div className="relative group">
+                    //     {/* Profile Picture */}
+                    //     <img
+                    //         className='w-12 h-12 rounded-full cursor-pointer'
+                    //         src={user?.photoURL}
+                    //         alt="User Avatar"
+                    //     />
+                    //     {/* Tooltip */}
+                    //     <div
+                    //         className="absolute hidden group-hover:block top-14 left-1/2 transform -translate-x-1/2 bg-black text-white text-sm px-3 py-1 rounded z-50"
+                    //     >
+                    //         {user?.displayName}
+                    //     </div>
+                    // </div>
+
+                    <div>
                         <img
+                            data-tooltip-id='my-tooltip'
+                            data-tooltip-content={user?.displayName}
+                            data-for="profile-tooltip"
                             className='w-12 h-12 rounded-full cursor-pointer'
                             src={user?.photoURL}
                             alt="User Avatar"
                         />
-                        {/* Tooltip */}
-                        <div
-                            className="absolute hidden group-hover:block top-14 left-1/2 transform -translate-x-1/2 bg-black text-white text-sm px-3 py-1 rounded z-50"
-                        >
-                            {user?.displayName}
-                        </div>
+                        <Tooltip id='my-tooltip' ></Tooltip>
                     </div>
+
                 ) : (
                     <Link to='/auth/register' className='btn btn-success'>Register</Link>
                 )}
             </div>
-        </div>
+        </div >
     );
 };
 

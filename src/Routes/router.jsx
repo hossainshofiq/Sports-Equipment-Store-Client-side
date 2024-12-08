@@ -28,14 +28,14 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <ProductsSection></ProductsSection>,
+                // loader: () => fetch('http://localhost:5000/equipments'),
                 loader: () => fetch('http://localhost:5000/featuredEquipments'),
-                // loader: () => fetch('https://sports-equipment-store-server.vercel.app/equipments')
             },
             {
                 path: '/categories',
                 element: <SportsCategories></SportsCategories>,
-                loader: () => fetch('http://localhost:5000/featuredEquipments')
-
+                loader: () => fetch('http://localhost:5000/categories')
+                // loader: () => fetch('http://localhost:5000/featuredEquipments')
             },
         ]
     },
@@ -47,7 +47,6 @@ const router = createBrowserRouter([
                 path: '/allEquipments',
                 element: <AllEquipments></AllEquipments>,
                 loader: () => fetch('http://localhost:5000/equipments')
-                // loader: () => fetch('https://sports-equipment-store-server.vercel.app/equipments')
             },
         ]
     },
@@ -94,22 +93,6 @@ const router = createBrowserRouter([
     //     element: <UpdateEquipment></UpdateEquipment>,
     //     loader: ({ params }) => fetch(`http://localhost:5000/equipments/${params.id}`)
     // },
-
-
-
-    // {
-    //     path: '/myEquipments/:id',
-    //     element: <PrivateRoute>
-    //         <UpdateEquipments></UpdateEquipments>
-    //     </PrivateRoute>,
-    //     children: [
-    //         {
-    //             path: '/myEquipments/:id',
-    //             element: <UpdateEquipments></UpdateEquipments>,
-
-    //         }
-    //     ]
-    // },
     {
         path: '/auth',
         element: <AuthLayout></AuthLayout>,
@@ -140,9 +123,9 @@ const router = createBrowserRouter([
     },
 
     {
-        // path: '*',
+        path: '*',
         // element: <h1>Error</h1>
-        // element: <ErrorPage></ErrorPage>
+        element: <ErrorPage></ErrorPage>
     }
 ])
 

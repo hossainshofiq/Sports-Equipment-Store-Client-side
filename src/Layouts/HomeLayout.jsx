@@ -14,17 +14,8 @@ const MainLayout = () => {
             </nav>
 
             <div>
-                {/* <Slider></Slider> */}
+                <Slider></Slider>
             </div>
-
-            {/* <div>
-                <SportsCategories></SportsCategories>
-            </div> */}
-
-            
-            {/* <div>
-                <ProductsSection></ProductsSection>
-            </div> */}
 
             <main>
                 <Outlet></Outlet>
