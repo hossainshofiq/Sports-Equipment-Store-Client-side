@@ -35,7 +35,7 @@ const WhyChoseUs = () => {
                 </div>
 
                 {/* Center lottie animation Section */}
-                <div className="flex items-center justify-center md:flex-1 relative">
+                <div className="flex items-center justify-center md:flex-1 relative transition-transform transform hover:-translate-y-2">
                     <Lottie className='border rounded-full shadow-xl w-80 h-80' animationData={animation} loop={true}></Lottie>
 
                 </div>
@@ -63,7 +63,6 @@ const WhyChoseUs = () => {
                 </div>
             </div>
 
-            {/* Button */}
             <button className="mt-8 px-6 py-3 bg-green-500 text-white text-lg font-semibold rounded hover:bg-green-600 transition">
                 Learn More About Our Products
             </button>

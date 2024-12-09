@@ -3,7 +3,8 @@ import { useLoaderData } from 'react-router-dom';
 import EquipmentCard from '../../components/EquipmentCard';
 import SportsCategories from './SportsCategories';
 import WhyChoseUs from './WhyChoseUs';
-import CustomerBenefits from './CustomerBenefits';
+
+import CustomerReviews from './CustomerReviews';
 
 const ProductsSection = () => {
 
@@ -29,7 +30,7 @@ const ProductsSection = () => {
             <div className="flex justify-end pt-5 pr-5">
                 <button
                     onClick={toggleTheme}
-                    className={`btn ${theme === "light" ? "bg-black hover:bg-gray-800 text-white" : "bg-gray-800 text-white hover:bg-gray-400"}`}
+                    className={`btn ${theme === "light" ? "bg-black hover:bg-gray-800 text-white" : "bg-white-800 text-black hover:bg-gray-400"}`}
                 >
                     {theme === "light" ? "Dark Mode" : "Light Mode"}
                 </button>
@@ -52,7 +53,7 @@ const ProductsSection = () => {
 
             <WhyChoseUs></WhyChoseUs>
 
-            <CustomerBenefits></CustomerBenefits>
+            <CustomerReviews></CustomerReviews>
         </div>
     );
 };

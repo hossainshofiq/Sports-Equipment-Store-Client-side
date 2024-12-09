@@ -11,7 +11,7 @@ const ViewEquipmentDetails = () => {
 
     return (
 
-        <div className={`card card-compact w-11/12 lg:w-1/2 container mx-auto my-10 border p-5 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"}`}>
+        <div className={`card card-compact w-11/12 lg:w-9/12 mx-auto my-10 border p-5 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"}`}>
             <figure>
                 <img
                     className='w-96 rounded-xl'
