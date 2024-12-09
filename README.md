@@ -1,6 +1,6 @@
 # Sports Equipment Hub
 
-**Live Site URL:** [Sports Equipment Hub](https://your-live-site-url.com)
+**Live Site URL:** https://sports-equipment-store-server.vercel.app/
 
 ## Overview
 

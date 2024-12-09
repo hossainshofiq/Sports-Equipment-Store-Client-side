@@ -29,7 +29,8 @@ const AddEquipments = () => {
         console.log(newEquipment)
 
         // send data to the server
-        fetch('http://localhost:5000/equipments', {
+        // fetch('http://localhost:5000/equipments', {
+        fetch('https://sports-equipment-store-server.vercel.app/equipments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -52,7 +53,8 @@ const AddEquipments = () => {
 
         const newCategory = { category_name };
 
-        fetch('http://localhost:5000/categories', {
+        // fetch('http://localhost:5000/categories', {
+        fetch('https://sports-equipment-store-server.vercel.app/categories', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -69,7 +71,8 @@ const AddEquipments = () => {
 
         const myEquipments = { image, item_name, category_name, description, price, rating, customization, processing_time, stock_status, user_email, user_name };
 
-        fetch('http://localhost:5000/myEquipments', {
+        // fetch('http://localhost:5000/myEquipments', {
+        fetch('https://sports-equipment-store-server.vercel.app/myEquipments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

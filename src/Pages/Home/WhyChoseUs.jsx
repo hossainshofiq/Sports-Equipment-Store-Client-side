@@ -1,16 +1,17 @@
 import React from 'react';
+import animation from '../../../src/LottieAnimation/animation.json'
+import Lottie from 'lottie-react';
 
 const WhyChoseUs = () => {
     return (
-        <section className="text-center py-12 font-sans">
-            {/* Header Section */}
+        <section className="text-center py-10 px-3">
+
             <header className="mb-8">
                 <h2 className="text-green-500 text-lg uppercase font-semibold">Benefits</h2>
                 <p className="text-green-500 text-3xl font-bold mt-2">Why Choose Us for Your Sports Gear</p>
             </header>
-    
-            {/* Content Section */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+
+            <div className="flex flex-col md:flex-row lg:flex-row items-center justify-center gap-5">
                 {/* Left Section */}
                 <div className="space-y-6 md:flex-1">
                     <div className="flex items-start">
@@ -32,23 +33,19 @@ const WhyChoseUs = () => {
                         </div>
                     </div>
                 </div>
-    
-                {/* Center Section */}
+
+                {/* Center lottie animation Section */}
                 <div className="flex items-center justify-center md:flex-1 relative">
-                    <div className="w-48 h-48 rounded-full bg-cover bg-center shadow-lg overflow-hidden" style={{ backgroundImage: `url('https://via.placeholder.com/200')` }}>
-                        <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-xl font-bold text-gray-800 shadow-md cursor-pointer absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            &#9654;
-                        </div>
-                    </div>
-                    
+                    <Lottie className='border rounded-full shadow-xl w-80 h-80' animationData={animation} loop={true}></Lottie>
+
                 </div>
-    
+
                 {/* Right Section */}
                 <div className="space-y-6 md:flex-1">
                     <div className="flex items-start">
                         <span className="text-green-500 text-2xl font-bold mr-4">03</span>
                         <div>
-                            <h4 className="text-lg font-bold">30-Day Money Back Guarantee</h4>
+                            <h4 className="text-lg font-bold">30-Days Money Back Guarantee</h4>
                             <p className="text-gray-600">
                                 We stand by our products. If you're not satisfied, return them within 30 days for a full refund.
                             </p>
@@ -65,7 +62,7 @@ const WhyChoseUs = () => {
                     </div>
                 </div>
             </div>
-    
+
             {/* Button */}
             <button className="mt-8 px-6 py-3 bg-green-500 text-white text-lg font-semibold rounded hover:bg-green-600 transition">
                 Learn More About Our Products

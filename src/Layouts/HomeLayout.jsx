@@ -14,7 +14,7 @@ const MainLayout = () => {
             </nav>
 
             <div>
-                <Slider></Slider>
+                {/* <Slider></Slider> */}
             </div>
 
             <main>

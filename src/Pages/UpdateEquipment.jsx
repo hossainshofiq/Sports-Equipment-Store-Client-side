@@ -36,7 +36,8 @@ const UpdateEquipment = () => {
 
 
         // send data to the server
-        fetch(`http://localhost:5000/equipments/${_id}`, {
+        // fetch(`http://localhost:5000/equipments/${_id}`, {
+        fetch(`https://sports-equipment-store-server.vercel.app/equipments/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -162,7 +163,8 @@ const UpdateEquipment = () => {
                                 <span className='label-text'>User Email: </span>
                             </label>
                             <label>
-                                <input defaultValue={user.email} disabled name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' />
+                                {/* <input defaultValue={user.email} disabled name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' /> */}
+                                <input defaultValue={user} disabled name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' />
                             </label>
                         </div>
                         <div className='form-control md:w-1/2'>
@@ -170,7 +172,8 @@ const UpdateEquipment = () => {
                                 <span className='label-text'>User Name: </span>
                             </label>
                             <label>
-                                <input defaultValue={user.displayName} disabled name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' />
+                                {/* <input defaultValue={user.displayName} disabled name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' /> */}
+                                <input defaultValue={user} disabled name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' />
                             </label>
                         </div>
                     </div>
