@@ -36,8 +36,8 @@ const UpdateEquipment = () => {
 
 
         // send data to the server
-        // fetch(`http://localhost:5000/equipments/${_id}`, {
-        fetch(`https://sports-equipment-store-server.vercel.app/equipments/${_id}`, {
+        fetch(`http://localhost:5000/equipments/${_id}`, {
+        // fetch(`https://sports-equipment-store-server.vercel.app/equipments/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -46,9 +46,7 @@ const UpdateEquipment = () => {
         })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
-                // navigate('/');
-                // navigate('/myEquipments');
+                console.log(data);
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',
@@ -58,13 +56,14 @@ const UpdateEquipment = () => {
                     })
                 }
             })
+            .catch (error => console.log (error))
     }
 
     return (
         <div className='w-11/12 mx-auto my-10'>
             <div className={`px-6 md:px-16 py-12 lg:px-28 lg:py-16 rounded-lg my-10 w-11/12 mx-auto ${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
                 <div className='flex flex-col gap-5 text-center mb-10'>
-                    <h2 className='text-3xl font-bold'>Update Your Equipment : {item_name} </h2>
+                    <h2 className='text-3xl font-bold'>Update Your Equipment ;;;;; : {item_name} </h2>
                     <p>Update feature allows users to input and save details about new items, such as sports equipment or other products. Users fill out a form with relevant fields like item name, category, description, price, rating, customization options, processing time, and stock status. Once the form is completed, clicking the "Add Equipment" button submits the data to the system, making the item available for inventory or listing.</p>
                 </div>
 
@@ -163,8 +162,9 @@ const UpdateEquipment = () => {
                                 <span className='label-text'>User Email: </span>
                             </label>
                             <label>
-                                {/* <input defaultValue={user.email} disabled name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' /> */}
-                                <input defaultValue={user} disabled name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' />
+                                <input defaultValue={user.email} disabled name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' />
+
+                                {/* <input defaultValue={user} disabled name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' /> */}
                             </label>
                         </div>
                         <div className='form-control md:w-1/2'>
@@ -172,8 +172,9 @@ const UpdateEquipment = () => {
                                 <span className='label-text'>User Name: </span>
                             </label>
                             <label>
-                                {/* <input defaultValue={user.displayName} disabled name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' /> */}
-                                <input defaultValue={user} disabled name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' />
+                                <input defaultValue={user.displayName} disabled name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' />
+
+                                {/* <input defaultValue={user} disabled name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' /> */}
                             </label>
                         </div>
                     </div>
