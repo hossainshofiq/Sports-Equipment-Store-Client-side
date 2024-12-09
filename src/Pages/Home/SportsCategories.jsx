@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const SportsCategories = () => {
-    const loadedCategories = useLoaderData();
     const [categories, setCategories] = useState([]);
+    useEffect (()=> {
+        fetch ('http://localhost:5000/categories')
+        .then (res=> res.json())
+        .then (data=> setCategories (data));
+    }, [])
 
-    useEffect(() => {
-        if (loadedCategories) {
-            setCategories(loadedCategories);
-        }
-    }, [loadedCategories]);
+    
+
+
 
     return (
         <div className="w-11/12 mx-auto my-10">

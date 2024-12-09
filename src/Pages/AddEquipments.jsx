@@ -28,9 +28,10 @@ const AddEquipments = () => {
         const newEquipment = { image, item_name, category_name, description, price, rating, customization, processing_time, stock_status, user_email, user_name };
         console.log(newEquipment)
 
+        const newCategory = { category_name };
+
         // send data to the server
-        // fetch('http://localhost:5000/equipments', {
-        fetch('https://sports-equipment-store-server.vercel.app/equipments', {
+        fetch('http://localhost:5000/equipments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -40,52 +41,39 @@ const AddEquipments = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('equipments created on db', data);
-                navigate('/myEquipments');
                 if (data.insertedId) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Equipment Added Successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Yes'
+                    
+                    fetch('http://localhost:5000/categories', {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(newCategory)
                     })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log('newCategory created on db', data);
+                            if (data.acknowledged) {
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: 'Equipment Added Successfully',
+                                    icon: 'success',
+                                    confirmButtonText: 'Yes'
+                                })
+                                
+                                navigate('/myEquipments');
+                            }
+                        })
+
                 }
             })
 
-        const newCategory = { category_name };
 
-        // fetch('http://localhost:5000/categories', {
-        fetch('https://sports-equipment-store-server.vercel.app/categories', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newCategory)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log('newCategory created on db', data);
-                if (data.insertedId) {
-                    // alert('Category created on db')
-                }
-            })
+
+
 
         const myEquipments = { image, item_name, category_name, description, price, rating, customization, processing_time, stock_status, user_email, user_name };
 
-        // fetch('http://localhost:5000/myEquipments', {
-        fetch('https://sports-equipment-store-server.vercel.app/myEquipments', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(myEquipments)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log('myEquipments created on db', data);
-                if (data.insertedId) {
-                    // alert('Category created on db')
-                }
-            })
 
         // const users = { user_email, user_name };
 

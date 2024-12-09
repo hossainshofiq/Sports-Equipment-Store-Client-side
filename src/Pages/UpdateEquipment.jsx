@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
+import Navbar from './../components/Navbar';
 
 const UpdateEquipment = () => {
 
     const { user } = useContext(AuthContext);
-    console.log(user)
+
 
     const navigate = useNavigate();
     const [theme, setTheme] = useState("light");
@@ -34,10 +35,11 @@ const UpdateEquipment = () => {
 
         console.log(updatedEquipment);
 
+        const newCategory = {category_name};
+
 
         // send data to the server
         fetch(`http://localhost:5000/equipments/${_id}`, {
-        // fetch(`https://sports-equipment-store-server.vercel.app/equipments/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -45,15 +47,30 @@ const UpdateEquipment = () => {
             body: JSON.stringify(updatedEquipment)
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Equipment Updated successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
+            .then (data => {
+                console.log (data);
+                if (data.modifiedCount>0) {
+                    fetch('http://localhost:5000/categories', {
+                        method: 'PUT',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(newCategory)
                     })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log('newCategory created on db', data);
+                            if (data.acknowledged) {
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: 'Equipment Added Successfully',
+                                    icon: 'success',
+                                    confirmButtonText: 'Yes'
+                                })
+                                
+                                navigate('/myEquipments');
+                            }
+                        })
                 }
             })
             .catch (error => console.log (error))
@@ -162,7 +179,7 @@ const UpdateEquipment = () => {
                                 <span className='label-text'>User Email: </span>
                             </label>
                             <label>
-                                <input defaultValue={user.email} disabled name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' />
+                                <input defaultValue={user?.email} disabled name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' />
 
                                 {/* <input defaultValue={user} disabled name='user_email' type="text" placeholder='enter user email' className='input input-bordered w-full' /> */}
                             </label>
@@ -172,7 +189,7 @@ const UpdateEquipment = () => {
                                 <span className='label-text'>User Name: </span>
                             </label>
                             <label>
-                                <input defaultValue={user.displayName} disabled name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' />
+                                <input defaultValue={user?.displayName} disabled name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' />
 
                                 {/* <input defaultValue={user} disabled name='user_name' type="text" placeholder='enter user name' className='input input-bordered w-full' /> */}
                             </label>

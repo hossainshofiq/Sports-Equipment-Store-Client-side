@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 
 const AllEquipments = () => {
-    const equipments = useLoaderData();
+    const loadedEquipments = useLoaderData();
+    const [equipments, setEquipments] = useState(loadedEquipments);
+    console.log(equipments);
 
     const handleViewDetails = (_id) => {
         console.log(_id);
     };
+
+    const [flag, setFlag] = useState (true);
+
+    const [bool, setBool] = useState(true);
+
+    const handleSortByPrice = () => {
+        setFlag (false);
+        
+        if (bool) {
+            const sortedData = equipments.sort((a, b) => a.price - b.price);
+            setEquipments(sortedData);
+        }
+        
+        else {
+            const sortedData = equipments.sort((a, b) => b.price - a.price);
+            setEquipments(sortedData);
+        }
+        setBool(!bool);
+        
+        console.log(sortedData)
+    }
 
     return (
         <div className='w-11/12 mx-auto my-10'>
@@ -18,7 +42,9 @@ const AllEquipments = () => {
                 </div>
 
                 <div className='flex justify-end mb-5'>
-                    <button className='btn btn-success hover:bg-black text-white'>Sort By Price</button>
+                    <button onClick={handleSortByPrice} className='btn btn-success hover:bg-black text-white'>Sort By Price { flag ? '' : bool ? <FaArrowUp/> : <FaArrowDown/>}
+
+                    </button>
                 </div>
 
                 <div className="overflow-x-auto border bg-gray-100 rounded-lg">
