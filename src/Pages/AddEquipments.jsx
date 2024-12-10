@@ -26,12 +26,12 @@ const AddEquipments = () => {
         const user_name = form.user_name.value;
 
         const newEquipment = { image, item_name, category_name, description, price, rating, customization, processing_time, stock_status, user_email, user_name };
-        console.log(newEquipment)
+        // console.log(newEquipment)
 
         const newCategory = { category_name };
 
         // send data to the server
-        fetch('https://sports-equipment-store-server.vercel.app/equipments', {
+        fetch('http://localhost:5000/equipments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -40,10 +40,10 @@ const AddEquipments = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('equipments created on db', data);
+                // console.log('equipments created on db', data);
                 if (data.insertedId) {
                     
-                    fetch('https://sports-equipment-store-server.vercel.app/categories', {
+                    fetch('http://localhost:5000/categories', {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
@@ -52,7 +52,7 @@ const AddEquipments = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log('newCategory created on db', data);
+                            // console.log('newCategory created on db', data);
                             if (data.acknowledged) {
                                 Swal.fire({
                                     title: 'Success!',

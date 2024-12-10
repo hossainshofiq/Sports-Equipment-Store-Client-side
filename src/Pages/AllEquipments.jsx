@@ -6,11 +6,7 @@ const AllEquipments = () => {
     const loadedEquipments = useLoaderData();
     const [equipments, setEquipments] = useState(loadedEquipments);
     // console.log(equipments);
-
-    const handleViewDetails = (_id) => {
-        console.log(_id);
-    };
-
+    
     const [flag, setFlag] = useState (true);
 
     const [bool, setBool] = useState(true);
