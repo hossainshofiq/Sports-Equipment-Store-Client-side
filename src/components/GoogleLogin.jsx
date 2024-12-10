@@ -26,9 +26,6 @@ const GoogleLogin = () => {
                     text: `Welcome ${user.displayName || 'User'}!`,
                     confirmButtonText: 'OK',
                 })
-                // .then(() => {
-                //     navigate('/');
-                // });
             })
             .catch((error) => {
                 Swal.fire({

@@ -9,15 +9,11 @@ const SportsCategories = () => {
         .then (data=> setCategories (data));
     }, [])
 
-    
-
-
-
     return (
         <div className="w-11/12 mx-auto my-10">
             <div className='mb-5'>
                 <h2 className="text-4xl font-bold text-center mb-3">Sports Categories </h2>
-                <p className='text-center'>The Sports Categories organizes products into various sports-related categories.</p>
+                <p className='text-center'>Discover a wide range of sports categories tailored to your passion. Gear up with the best to elevate your game</p>
             </div>
 
             {categories.length > 0 ? (

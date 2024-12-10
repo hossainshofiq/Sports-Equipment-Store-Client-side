@@ -4,13 +4,11 @@ import { AuthContext } from '../Provider/AuthProvider';
 import GoogleLogin from '../components/GoogleLogin';
 import Swal from 'sweetalert2';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { stringify } from 'postcss';
 
 const Register = () => {
 
     const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
-    // const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const handleRegister = (e) => {
@@ -20,8 +18,6 @@ const Register = () => {
         const email = e.target.email.value;
         const photo = e.target.photo.value;
         const password = e.target.password.value;
-
-        // setErrorMessage('');
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     if (!passwordRegex.test(password)) {
@@ -87,7 +83,7 @@ const Register = () => {
     };
 
     return (
-        <div className="hero bg-base-200 my-10 container mx-auto rounded-xl">
+        <div className="hero bg-base-200 mt-28 mb-10 container mx-auto rounded-xl">
             <div className="hero-content flex-col">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Register Now!</h1>

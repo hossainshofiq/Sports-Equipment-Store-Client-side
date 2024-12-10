@@ -3,8 +3,6 @@ import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Slider from '../Pages/Home/Slider';
-import ProductsSection from '../Pages/Home/ProductsSection';
-import SportsCategories from '../Pages/Home/SportsCategories';
 
 const MainLayout = () => {
     return (
@@ -14,7 +12,7 @@ const MainLayout = () => {
             </nav>
 
             <div>
-                {/* <Slider></Slider> */}
+                <Slider></Slider>
             </div>
 
             <main>

@@ -16,7 +16,6 @@ const Login = () => {
 
         const email = e.target.email.value;
         const password = e.target.password.value;
-        // console.log(email, password);
 
         userLogin(email, password)
             .then(result => {
@@ -27,16 +26,9 @@ const Login = () => {
                     text: 'Welcome back!',
                     confirmButtonText: 'OK',
                 })
-                // .then(() => {
-                //     navigate('/');
-                // });
-                // console.log(result.user);
-                // navigate('/');
-
 
             })
             .catch(error => {
-                // console.log('Error', error);
                 Swal.fire({
                     icon: 'error',
                     title: 'Login Field',
@@ -46,7 +38,7 @@ const Login = () => {
             })
     }
     return (
-        <div className="hero bg-base-200 my-10 container mx-auto rounded-xl">
+        <div className="hero bg-base-200 mt-28 mb-10 container mx-auto rounded-xl">
             <div className="hero-content flex-col">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Login Now!</h1>

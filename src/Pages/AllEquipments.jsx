@@ -5,7 +5,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 const AllEquipments = () => {
     const loadedEquipments = useLoaderData();
     const [equipments, setEquipments] = useState(loadedEquipments);
-    console.log(equipments);
+    // console.log(equipments);
 
     const handleViewDetails = (_id) => {
         console.log(_id);
@@ -33,8 +33,8 @@ const AllEquipments = () => {
     }
 
     return (
-        <div className='w-11/12 mx-auto my-10'>
-            <div className='my-10'>
+        <div className='w-11/12 mx-auto'>
+            <div className='mt-24 mb-10'>
 
                 <div className='mb-10 text-center'>
                     <h1 className='text-3xl font-bold mb-3'>All Sports Equipments : {equipments.length}</h1>

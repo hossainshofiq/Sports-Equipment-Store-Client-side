@@ -1,43 +1,66 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
-import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
-// { singleEquipment }
+import { BiLeftArrowAlt } from 'react-icons/bi';
 
 const ViewEquipmentDetails = () => {
-
     const equipments = useLoaderData();
-    // console.log(equipments);
-    const [theme, setTheme] = useState("light");
 
     return (
+        <div className="container mx-auto mt-20 mb-10">
+            <div className="grid lg:grid-cols-2 gap-10 items-center border p-5 shadow-lg rounded-lg">
+                <div>
+                    <div className="relative mb-5">
+                        <img
+                            className="w-full h-[400px] object-cover rounded-lg"
+                            src={equipments?.image}
+                            alt={equipments?.item_name}
+                        />
+                    </div>
 
-        <div className={`card card-compact w-11/12 lg:w-9/12 mx-auto my-10 border p-5 ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"}`}>
-            <figure>
-                <img
-                    className='w-96 rounded-xl'
-                    src={equipments?.image}
-                    alt="Shoes" />
-            </figure>
-            <div className="card-body">
-                <h2 className="card-title font-bold">{equipments?.item_name} </h2>
-                <p className='font-semibold'>Category Name: <span className='font-normal'>{equipments?.category_name}</span> </p>
-                <p className='font-semibold'>Description: <span className='font-normal'>{equipments?.description}</span> </p>
-                <p className='font-semibold'>Price: $<span className='font-normal'>{equipments?.price}</span> </p>
-                <p className='font-semibold'>Rating: $<span className='font-normal'>{equipments?.rating}</span> </p>
-                <p className='font-semibold'>Procession Time: <span className='font-normal'>{equipments?.processing_time}</span> </p>
-                <p className='font-semibold'>Stock Status: <span className='font-normal'>{equipments?.stock_status}</span> </p>
-
-                <div className="divider"></div>
-
-                <div className='flex justify-between'>
-                    <Link to='/'><button className='btn bg-green-500 hover:bg-green-600 text-white'><BiLeftArrowAlt></BiLeftArrowAlt> Back to Home</button></Link>
-
-                    {/* <button className='btn bg-blue-900 text-white'>Add to My Equipment List <BiRightArrowAlt></BiRightArrowAlt></button> */}
+                    <div className='flex gap-3'>
+                        <img
+                            className="w-20 h-20 rounded-lg cursor-pointer border"
+                            src={equipments?.image}
+                            alt="Thumbnail 2"
+                        />
+                        <img
+                            className="w-20 h-20 rounded-lg cursor-pointer border"
+                            src={equipments?.image}
+                            alt="Thumbnail 3"
+                        />
+                    </div>
                 </div>
 
+                <div>
+                    <h2 className="text-2xl font-bold mb-3">{equipments?.item_name}</h2>
+                    <p className="text-lg font-semibold text-gray-600 mb-4">${equipments?.price}</p>
+                    <p className="text-gray-700 mb-6">{equipments?.description}</p>
+
+                    <div className="mt-6">
+                        <p className="text-sm text-gray-500">
+                            <span className="font-semibold">Categories:</span> {equipments?.category_name || "N/A"}
+                        </p>
+
+                        <p className='text-sm text-gray-500'>
+                            <span className='font-semibold'>Processing Time:</span> {equipments?.processing_time || "N/A"}
+                        </p>
+                        <p className='text-sm text-gray-500'>
+                            <span className='font-semibold'>Processing Time:</span> {equipments?.stock_status || "N/A"}
+                        </p>
+
+                        <p className="text-sm text-gray-500">
+                            <span className="font-semibold">Tags:</span> Sports Gear
+                        </p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <Link to="/" className="mt-5 inline-block bg-gray-800 text-white px-5 py-2 rounded-lg">
+                            <BiLeftArrowAlt className="inline-block mr-2" /> Back to Home
+                        </Link>
+                    </div>
+                </div>
             </div>
         </div>
     );
 };
-// image, item_name, category_name, description, price, rating, customization, processing_time, stock_status, user_email, user_name
+
 export default ViewEquipmentDetails;

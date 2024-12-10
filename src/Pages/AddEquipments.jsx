@@ -6,7 +6,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 const AddEquipments = () => {
 
     const { user } = useContext(AuthContext);
-    const [theme, setTheme] = useState("light");
+
     const navigate = useNavigate();
 
     const handleAddEquipment = (e) => {
@@ -68,33 +68,10 @@ const AddEquipments = () => {
                 }
             })
 
-
-
-
-
-        const myEquipments = { image, item_name, category_name, description, price, rating, customization, processing_time, stock_status, user_email, user_name };
-
-
-        // const users = { user_email, user_name };
-
-        // fetch('http://localhost:5000/users', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(users)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log('users created on db', data);
-        //         if (data.insertedId) {
-        //             // alert('Category created on db')
-        //         }
-        //     })
     }
 
     return (
-        <div className={`px-6 md:px-16 py-12 lg:px-28 lg:py-16 rounded-lg my-10 w-11/12 mx-auto ${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
+        <div className={`px-6 md:px-16 py-12 lg:px-28 lg:py-16 rounded-lg my-10 w-11/12 mx-auto `}>
             <div className='flex flex-col gap-5 text-center mb-10'>
                 <h2 className='text-3xl font-bold'>Add Equipment </h2>
                 <p>The Add Equipment feature allows users to input and save details about new items, such as sports equipment or other products. Users fill out a form with relevant fields like item name, category, description, price, rating, customization options, processing time, and stock status. Once the form is completed, clicking the "Add Equipment" button submits the data to the system, making the item available for inventory or listing.</p>
