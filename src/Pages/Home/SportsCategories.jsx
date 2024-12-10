@@ -4,7 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 const SportsCategories = () => {
     const [categories, setCategories] = useState([]);
     useEffect (()=> {
-        fetch ('http://localhost:5000/categories')
+        fetch ('https://sports-equipment-store-server.vercel.app/categories')
         .then (res=> res.json())
         .then (data=> setCategories (data));
     }, [])

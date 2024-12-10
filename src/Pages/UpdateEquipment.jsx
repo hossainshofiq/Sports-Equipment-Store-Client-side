@@ -35,7 +35,7 @@ const UpdateEquipment = () => {
 
 
         // send data to the server
-        fetch(`http://localhost:5000/equipments/${_id}`, {
+        fetch(`https://sports-equipment-store-server.vercel.app/equipments/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -46,7 +46,7 @@ const UpdateEquipment = () => {
             .then (data => {
                 console.log (data);
                 if (data.modifiedCount>0) {
-                    fetch('http://localhost:5000/categories', {
+                    fetch('https://sports-equipment-store-server.vercel.app/categories', {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'

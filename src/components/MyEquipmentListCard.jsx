@@ -19,7 +19,7 @@ const MyEquipmentListCard = ({ singleEquipment }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/equipments/${_id}`, {
+                fetch(`https://sports-equipment-store-server.vercel.app/${_id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -37,6 +37,41 @@ const MyEquipmentListCard = ({ singleEquipment }) => {
     }
 
     return (
+        
+        // <div className="card card-compact bg-white border p-5 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:opacity-90">
+        //     <figure>
+        //         <img
+        //             className='w-full rounded-lg'
+        //             src={image}
+        //             alt="Equipment_image"
+        //         />
+        //     </figure>
+
+        //     <div className="card-body text-gray-800 mt-4">
+        //         <h2 className="card-title text-2xl font-bold mb-2">{item_name}</h2>
+        //         <p className='font-semibold text-lg'>Category: <span className='font-normal'>{category_name}</span></p>
+        //         <p className='font-semibold text-lg'>Description: <span className='font-normal'>{description}</span></p>
+        //         <p className='font-semibold text-lg'>Price: <span className='font-normal'>${price}</span></p>
+        //         <p className='font-semibold text-lg'>Rating: <span className='font-normal'>{rating}</span></p>
+        //         <p className='font-semibold text-lg'>Customization: <span className='font-normal'>{customization}</span></p>
+        //         <p className='font-semibold text-lg'>Stock Status: <span className='font-normal'>{stock_status}</span></p>
+        //         <p className='font-semibold text-lg'>Processing Time: <span className='font-normal'>{processing_time}</span></p>
+        //     </div>
+
+        //     <div className="card-actions justify-between mt-4">
+        //         <Link to={`updateEquipment/${_id}`}>
+        //             <button className='btn bg-lime-500 text-white hover:bg-lime-600 text-xl rounded-md p-2'>
+        //                 <FaPen />
+        //             </button>
+        //         </Link>
+
+        //         <button onClick={() => handleEquipmentDelete(_id)} className='btn bg-red-500 text-white hover:bg-red-600 text-2xl rounded-md p-2'>
+        //             <MdDeleteOutline />
+        //         </button>
+        //     </div>
+        // </div>
+
+
         <div className="card bg-white p-5 border rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2">
         <figure className="overflow-hidden rounded-lg mb-4">
             <img
@@ -72,11 +107,15 @@ const MyEquipmentListCard = ({ singleEquipment }) => {
         </div>
 
         <div className="card-actions mt-4 flex justify-between items-center">
-            <Link to={`/equipmentDetails/${_id}`} className="w-full">
-                <button className="btn bg-green-500 hover:bg-green-600 text-white w-full py-2 rounded-lg font-medium transition-transform transform hover:scale-105">
-                    View Details
+        <Link to={`updateEquipment/${_id}`}>
+                    <button className='btn bg-lime-500 text-white hover:bg-lime-600 text-xl rounded-md p-2'>
+                        <FaPen />
+                    </button>
+                </Link>
+
+                <button onClick={() => handleEquipmentDelete(_id)} className='btn bg-red-500 text-white hover:bg-red-600 text-2xl rounded-md p-2'>
+                    <MdDeleteOutline />
                 </button>
-            </Link>
         </div>
     </div>
     );

@@ -20,6 +20,7 @@ import UpdateEquipment from '../Pages/UpdateEquipment';
 import UpdateEquipmentLayout from '../Layouts/UpdateEquipmentLayout';
 
 // https://sports-equipment-store-server.vercel.app/
+// http://localhost:5000
 const router = createBrowserRouter([
     {
         path: '/',
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <ProductsSection></ProductsSection>,
-                loader: () => fetch('http://localhost:5000/featuredEquipments'),
+                loader: () => fetch('https://sports-equipment-store-server.vercel.app/featuredEquipments'),
             },
             {
                 path: '/categories',
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
             {
                 path: '/allEquipments',
                 element: <AllEquipments></AllEquipments>,
-                loader: () => fetch('http://localhost:5000/equipments')
+                loader: () => fetch('https://sports-equipment-store-server.vercel.app/equipments')
             },
         ]
     },
@@ -81,7 +82,7 @@ const router = createBrowserRouter([
             {
                 path: '/myEquipments/updateEquipment/:id',
                 element: <UpdateEquipment></UpdateEquipment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/equipments/${params.id}`)
+                loader: ({ params }) => fetch(`https://sports-equipment-store-server.vercel.app/equipments/${params.id}`)
             },
         ]
     },
@@ -108,7 +109,7 @@ const router = createBrowserRouter([
             {
                 path: '/equipmentDetails/:id',
                 element: <ViewEquipmentDetails></ViewEquipmentDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/equipments/${params.id}`)
+                loader: ({ params }) => fetch(`https://sports-equipment-store-server.vercel.app/equipments/${params.id}`)
             },
 
         ]

@@ -31,7 +31,7 @@ const AddEquipments = () => {
         const newCategory = { category_name };
 
         // send data to the server
-        fetch('http://localhost:5000/equipments', {
+        fetch('https://sports-equipment-store-server.vercel.app/equipments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ const AddEquipments = () => {
                 console.log('equipments created on db', data);
                 if (data.insertedId) {
                     
-                    fetch('http://localhost:5000/categories', {
+                    fetch('https://sports-equipment-store-server.vercel.app/categories', {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
