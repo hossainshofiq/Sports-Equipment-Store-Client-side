@@ -53,6 +53,7 @@ const AllEquipments = () => {
                                 <th>Name</th>
                                 <th>Category</th>
                                 <th>Price</th>
+                                <th>Ratings</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -62,7 +63,7 @@ const AllEquipments = () => {
                                     <th>{index + 1}</th>
                                     <td>
                                         <img
-                                            className='w-10 h-10 object-cover rounded-full'
+                                            className='w-9 h-9 md:w-10 md:h-10 lg:w-10 lg:h-10 object-cover rounded-full'
                                             src={equipment.image}
                                             alt={equipment.item_name}
                                         />
@@ -70,6 +71,7 @@ const AllEquipments = () => {
                                     <td>{equipment.item_name}</td>
                                     <td>{equipment.category_name}</td>
                                     <td>${equipment.price}</td>
+                                    <td>⭐{equipment.rating}/5</td>
                                     <td>
                                         <Link to={`/equipmentDetails/${equipment._id}`}>
                                             <button

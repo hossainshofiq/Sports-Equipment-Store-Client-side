@@ -31,7 +31,7 @@ const AddEquipments = () => {
         const newCategory = { category_name };
 
         // send data to the server
-        fetch('http://localhost:5000/equipments', {
+        fetch('https://sports-equipment-store-server.vercel.app/equipments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ const AddEquipments = () => {
                 // console.log('equipments created on db', data);
                 if (data.insertedId) {
                     
-                    fetch('http://localhost:5000/categories', {
+                    fetch('https://sports-equipment-store-server.vercel.app/categories', {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'
@@ -64,7 +64,6 @@ const AddEquipments = () => {
                                 navigate('/myEquipments');
                             }
                         })
-
                 }
             })
 
@@ -74,7 +73,7 @@ const AddEquipments = () => {
         <div className={`px-6 md:px-16 py-12 lg:px-28 lg:py-16 rounded-lg my-10 w-11/12 mx-auto `}>
             <div className='flex flex-col gap-5 text-center mb-10'>
                 <h2 className='text-3xl font-bold'>Add Equipment </h2>
-                <p>The Add Equipment feature allows users to input and save details about new items, such as sports equipment or other products. Users fill out a form with relevant fields like item name, category, description, price, rating, customization options, processing time, and stock status. Once the form is completed, clicking the "Add Equipment" button submits the data to the system, making the item available for inventory or listing.</p>
+                <p>Please fill out this form with relevant fields like item name, category, description, price, rating, customization options, processing time, and stock status, then clicking the "Add Equipment" button submits the data to the system, making the item available for inventory or listing.</p>
             </div>
 
             <form onSubmit={handleAddEquipment}>

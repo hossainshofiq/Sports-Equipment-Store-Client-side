@@ -1,6 +1,7 @@
 # Sports Equipment Hub
 
-**Live Site URL:** http://localhost:5000
+**Live Site URL:** 
+[https://sports-equipments-4a037.web.app/](https://sports-equipments-4a037.web.app/)
 
 ## Overview
 

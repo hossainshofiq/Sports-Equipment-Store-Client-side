@@ -66,7 +66,7 @@ const Navbar = () => {
                     <input type="checkbox" onChange={toggleTheme} checked={theme === 'dark'} />
                     {/* Sun Icon */}
                     <svg
-                        className="swap-on h-10 w-10 fill-current"
+                        className="swap-on w-8 h-8 md:h-10 md:w-10 fill-current"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                     >
@@ -76,7 +76,7 @@ const Navbar = () => {
                     </svg>
                     {/* Moon Icon */}
                     <svg
-                        className="swap-off h-10 w-10 fill-current"
+                        className="swap-off w-8 h-8 md:h-10 md:w-10 fill-current"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                     >
@@ -86,7 +86,7 @@ const Navbar = () => {
                     </svg>
                 </label>
                 {user && user?.email ? (
-                    <button onClick={userLogOut} className='btn btn-accent'>Logout</button>
+                    <button onClick={userLogOut} className='btn btn-error'>Logout</button>
                 ) : (
                     <Link to='/auth/login' className='btn btn-accent'>Log In</Link>
                 )}
@@ -95,14 +95,14 @@ const Navbar = () => {
                         <img
                             data-tooltip-id='my-tooltip'
                             data-tooltip-content={user?.displayName}
-                            className='w-12 h-12 rounded-full cursor-pointer'
+                            className='w-12 h-12 rounded-full border border-black cursor-pointer'
                             src={user?.photoURL}
                             alt="User Avatar"
                         />
                         <Tooltip id='my-tooltip' />
                     </div>
                 ) : (
-                    <Link to='/auth/register' className='btn btn-success'>Register</Link>
+                    <Link to='/auth/register' className='btn btn-accent'>Register</Link>
                 )}
             </div>
         </div>

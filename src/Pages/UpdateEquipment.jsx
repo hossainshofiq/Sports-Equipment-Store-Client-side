@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
 
@@ -9,7 +9,6 @@ const UpdateEquipment = () => {
     console.log(user)
 
     const navigate = useNavigate();
-    const [theme, setTheme] = useState("light");
     const equipment = useLoaderData();
 
     const { _id, image, item_name, category_name, description, price, rating, customization, processing_time, stock_status, user_email, user_name } = equipment;
@@ -36,7 +35,7 @@ const UpdateEquipment = () => {
 
 
         // send data to the server
-        fetch(`http://localhost:5000/equipments/${_id}`, {
+        fetch(`https://sports-equipment-store-server.vercel.app/equipments/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -53,17 +52,23 @@ const UpdateEquipment = () => {
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
+                    navigate('/myEquipments');
                 }
             })
-            // .catch (error => console.log (error))
+        // .catch (error => console.log (error))
     }
 
     return (
         <div className='w-11/12 mx-auto my-10'>
-            <div className={`px-6 md:px-16 py-12 lg:px-28 lg:py-16 rounded-lg my-10 w-11/12 mx-auto ${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
+            <div className={`px-6 md:px-16 py-12 lg:px-28 lg:py-16 rounded-lg my-10 w-11/12 mx-auto `}>
                 <div className='flex flex-col gap-5 text-center mb-10'>
                     <h2 className='text-3xl font-bold'>Update Your Equipment : {item_name} </h2>
-                    <p>Update feature allows users to input and save details about new items, such as sports equipment or other products. Users fill out a form with relevant fields like item name, category, description, price, rating, customization options, processing time, and stock status. Once the form is completed, clicking the "Add Equipment" button submits the data to the system, making the item available for inventory or listing.</p>
+                    <p>For update your sports equipment fill out the fields. Once the form is completed, clicking the "Update Equipment" button submits the data to the system, making the equipments information were updated.</p>
+                    <Link to='/myEquipments'>
+                        <button className="btn text-white bg-green-500 hover:bg-green-600">
+                            Back to My Equipment
+                        </button>
+                    </Link>
                 </div>
 
                 <form onSubmit={handleUpdateEquipment}>
@@ -85,7 +90,7 @@ const UpdateEquipment = () => {
                                 <span className='label-text'>Item Name: </span>
                             </label>
                             <label>
-                                <input defaultValue={item_name } name='item_name' type="text" placeholder='enter item name' className='input input-bordered w-full' />
+                                <input defaultValue={item_name} name='item_name' type="text" placeholder='enter item name' className='input input-bordered w-full' />
                             </label>
                         </div>
                         <div className='form-control md:w-1/2'>

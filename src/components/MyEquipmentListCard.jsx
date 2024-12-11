@@ -19,7 +19,7 @@ const MyEquipmentListCard = ({ singleEquipment }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/equipments/${_id}`, {
+                fetch(`https://sports-equipment-store-server.vercel.app/equipments/${_id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -59,7 +59,7 @@ const MyEquipmentListCard = ({ singleEquipment }) => {
                     <span className="font-semibold">Price:</span> ${price}
                 </p>
                 <p className="text-sm text-gray-600">
-                    <span className="font-semibold">Rating:</span> ⭐ {rating}
+                    <span className="font-semibold">Rating:</span> ⭐ {rating}/5
                 </p>
                 <p className="text-sm text-gray-600">
                     <span className="font-semibold">Customization:</span> {customization || "Not available"}
@@ -73,9 +73,9 @@ const MyEquipmentListCard = ({ singleEquipment }) => {
             </div>
 
             <div className="card-actions mt-4 flex justify-between items-center">
-        
+
                 <Link to={`updateEquipment/${_id}`}>
-                    <button className='btn bg-lime-500 text-white hover:bg-lime-600 transition-all duration-300 transform hover:scale-105 text-xl rounded-md py-3 px-8 min-w-[140px]'>
+                    <button className='btn bg-green-500 text-white hover:bg-green-600 transition-all duration-300 transform hover:scale-105 text-xl rounded-md py-3 px-8 min-w-[140px]'>
                         <FaPen />
                     </button>
                 </Link>

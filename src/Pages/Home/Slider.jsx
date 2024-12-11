@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import slide3 from '../../assets/Football2.jpg';
 import slide2 from '../../assets/fitness1.jpg';
 import slide1 from '../../assets/tennis_bat4.png';
+import { Link } from 'react-router-dom';
 
 const Slider = () => {
     return (
@@ -33,9 +34,11 @@ const Slider = () => {
                             <p className="text-sm md:text-base lg:text-lg">
                                 Find the best tennis rackets and gear to improve your performance on the court.
                             </p>
-                            <button className="btn text-white bg-green-500 hover:bg-green-600">
-                                Shop Tennis Gear
-                            </button>
+                            <Link to='/allEquipments'>
+                                <button className="btn text-white bg-green-500 hover:bg-green-600">
+                                    Browse Football Gear
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -53,9 +56,11 @@ const Slider = () => {
                             <p className="text-sm md:text-base lg:text-lg">
                                 Achieve your fitness goals with top-quality equipment and accessories.
                             </p>
-                            <button className="btn text-white bg-green-500 hover:bg-green-600">
-                                Explore Fitness Gear
-                            </button>
+                            <Link to='/allEquipments'>
+                                <button className="btn text-white bg-green-500 hover:bg-green-600">
+                                    Browse Football Gear
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -73,9 +78,11 @@ const Slider = () => {
                             <p className="text-sm md:text-base lg:text-lg">
                                 Gear up with premium football equipment to dominate every match.
                             </p>
-                            <button className="btn text-white bg-green-500 hover:bg-green-600">
-                                Browse Football Gear
-                            </button>
+                            <Link to='/allEquipments'>
+                                <button className="btn text-white bg-green-500 hover:bg-green-600">
+                                    Browse Football Gear
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </SwiperSlide>

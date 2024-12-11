@@ -25,7 +25,7 @@ const EquipmentCard = ({ singleEquipment }) => {
                     <span className="font-semibold">Price:</span> ${price}
                 </p>
                 <p className="text-sm text-gray-600">
-                    <span className="font-semibold">Rating:</span> ⭐ {rating}
+                    <span className="font-semibold">Rating:</span> ⭐ {rating}/5
                 </p>
                 <p className="text-sm text-gray-600">
                     <span className="font-semibold">Customization:</span> {customization || "Not available"}

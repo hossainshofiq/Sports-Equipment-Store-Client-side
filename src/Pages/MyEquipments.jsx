@@ -10,7 +10,7 @@ const MyEquipments = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myEquipments/${user.email}`)
+        fetch(`https://sports-equipment-store-server.vercel.app/myEquipments/${user.email}`)
             .then(res => res.json())
             .then(data => setEquipments(data));
     }, [equipments])
