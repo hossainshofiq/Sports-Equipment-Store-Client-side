@@ -1,4 +1,4 @@
-# Sports Equipment Hub
+# Sports Gear
 
 **Live Site URL:** 
 [https://sports-equipments-4a037.web.app/](https://sports-equipments-4a037.web.app/)
