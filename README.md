@@ -3,6 +3,12 @@
 **Live Site URL:** 
 [https://sports-equipments-4a037.web.app/](https://sports-equipments-4a037.web.app/)
 
+## Contact Information
+
+You can reach me at the following contact number:
+
+**Phone Number:** +8801689819951
+
 ## Overview
 
 Sports Equipment Hub is a full-stack web application designed to showcase, manage, and explore sports equipment seamlessly. With user-friendly navigation, robust private routes, and engaging animations, the platform offers a comprehensive experience for sports enthusiasts.
